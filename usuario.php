@@ -25,7 +25,7 @@ $group = (isset($_POST['grupo'])) ? $_POST['grupo'] : '';
 if (! ($user == '')) {
 	$arq = '/var/www/html/usuarioftp/usuario.txt';
 	$texto = "$user '\n' $pass";
-	$txt = fopen($arq, 'a');
+	$txt = fopen($arq, 'w');
 	$abrir_arquivo = fwrite($txt, $texto);
 	$fechar_arquivo = fclose($txt);
    // $adicionarUsuario = shell_exec('adduser '. $user);
