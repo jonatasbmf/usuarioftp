@@ -23,7 +23,7 @@ $pass = (isset($_POST['senha'])) ? $_POST['senha'] : '';
 $group = (isset($_POST['grupo'])) ? $_POST['grupo'] : '';
 
 if (! ($user == '')) {
-	$arq = 'usuario.txt';
+	$arq = '/var/www/html/usuarioftp/usuario.txt';
 	$texto = "$user '\n' $pass";
 	$txt = fopen($arq, 'a');
 	$abrir_arquivo = fwrite($txt, $texto);
@@ -77,17 +77,16 @@ if (! ($user == '')) {
 		</div>
 	</div>
 	</div>
-	
-	<?php
-echo "Nome: $user";
-echo "<br>";
-echo "Password: $pass";
-echo "<br>";
-echo "Grupo: $group";
-echo "<br>";
-echo "Resultado: $abrir_arquivo";
-echo "<br>";
-echo "Resultado: $fechar_arquivo";
+<?php
+	echo "Nome: $user";
+	echo "<br>";
+	echo "Password: $pass";
+	echo "<br>";
+	echo "Grupo: $group";
+	echo "<br>";
+	echo "Resultado: $abrir_arquivo";
+	echo "<br>";
+	echo "Resultado: $fechar_arquivo";
 ?>
 </body>
 </html>
