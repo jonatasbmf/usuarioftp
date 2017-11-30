@@ -22,23 +22,13 @@ $user = (isset($_POST['nome'])) ? $_POST['nome'] : '';
 $pass = (isset($_POST['senha'])) ? $_POST['senha'] : '';
 $group = (isset($_POST['grupo'])) ? $_POST['grupo'] : '';
 
-if (! ($user == '')) {
+if ( $user != '') {
 	$arquivo = fopen("/var/www/html/usuarioftp/usuario.txt", 'a');
 	$texto = "$user';'$pass\n";
 	$escreve_arquivo = fwrite($txt, $texto);
 	$fechar_arquivo = fclose($txt);
-<<<<<<< HEAD
 	$result = shell_exec('cat /var/www/html/usuarioftp/usuario.txt');
 	$result = $result." Tem que ter algo antes disso, se não tem, deu merda";
-=======
-	$result = exec('cat /var/www/html/usuarioftp/usuario.txt');
-<<<<<<< HEAD
-=======
-	$result = $result." Tem que ter algo antes disso, se não tem, deu merda";
->>>>>>> 8ffbbfdef61fc67d6af0b3f4b9492bd60082edf4
-   // $adicionarUsuario = shell_exec('adduser '. $user);
-   // $defineSenha = shell_exec('passwd '. $pass);
->>>>>>> master
 }
 ?>
 	<div class="nnavbar-top">
@@ -75,25 +65,20 @@ if (! ($user == '')) {
 							</div>
 						</div>
     				</div>
-    				<input class="btn btn-success" type="submit" name="Gerar"
-    					Value="Criar usuário"></input>
-    				</td>
-    				<td><input class="btn btn-success" type="reset" name="Limpar"
-    					Value="Limpar"></input></td> </a>
-    				</td>
+    				<input class="btn btn-success" type="submit" name="Gerar" Value="Enviar cadastro"></input>
+					<btn name="Criar" Value="Criar" />
+    				<input class="btn btn-success" type="reset" name="Limpar" Value="Limpar"></input>
 				</form>
 			</div>
 		</div>
 	</div>
 	</div>
 <?php
-	echo "Nome: $user";
-	echo "<br>";
-	echo "Password: $pass";
-	echo "<br>";
-	echo "Grupo: $group";
-	echo "<br>";
-	echo "Resultado: $result";
+	echo "<pre>
+	Nome: $user
+	Password: $pass
+	Resultado: $result
+	</pre>";
 ?>
 </body>
 </html>
