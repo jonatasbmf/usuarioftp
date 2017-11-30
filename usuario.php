@@ -23,12 +23,16 @@ $pass = (isset($_POST['senha'])) ? $_POST['senha'] : '';
 $group = (isset($_POST['grupo'])) ? $_POST['grupo'] : '';
 
 if ( $user != '') {
+	$entrou = "Entrou nessa porra, mas não fez nada";
 	$arquivo = fopen("/var/www/html/usuarioftp/usuario.txt", 'a');
 	$texto = "$user';'$pass\n";
 	$escreve_arquivo = fwrite($txt, $texto);
 	$fechar_arquivo = fclose($txt);
 	$result = shell_exec('cat /var/www/html/usuarioftp/usuario.txt');
 	$result = $result." Tem que ter algo antes disso, se não tem, deu merda";
+} else {
+	$naoentrou = "Não entrou, e não fez porra nenhuma";
+
 }
 ?>
 	<div class="nnavbar-top">
@@ -73,12 +77,20 @@ if ( $user != '') {
 		</div>
 	</div>
 	</div>
+	<br> <br>
 <?php
 	echo "<pre>
 	Nome: $user
 	Password: $pass
 	Resultado: $result
+	Entrou: $entrou
+	Não entrou: $naoentrou
 	</pre>";
+?>
+	<br> <br>
+<?php
+$output = shell_exec('cat /var/www/html/usuario.txt');
+echo "<pre>$output</pre>";
 ?>
 </body>
 </html>
