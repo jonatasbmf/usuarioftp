@@ -21,11 +21,10 @@
 $user = (isset($_POST['nome'])) ? $_POST['nome'] : '';
 $pass = (isset($_POST['senha'])) ? $_POST['senha'] : '';
 $group = (isset($_POST['grupo'])) ? $_POST['grupo'] : '';
-
 if ( $user != '') {
 	$entrou = "Entrou nessa porra, mas não fez nada";
 	$arquivo = fopen("/var/www/html/usuarioftp/usuario.txt", 'a');
-	$texto = '$user . '\n' . $pass . '\n'';
+	$texto = "'$user . '\n' . $pass . '\n''";
 	$escreve_arquivo = fwrite($txt, $texto);
 	$fechar_arquivo = fclose($txt);
 
