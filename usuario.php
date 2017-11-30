@@ -21,21 +21,16 @@
 $user = (isset($_POST['nome'])) ? $_POST['nome'] : '';
 $pass = (isset($_POST['senha'])) ? $_POST['senha'] : '';
 $group = (isset($_POST['grupo'])) ? $_POST['grupo'] : '';
-if ( $user != '') {
-	$entrou = "Entrou nessa porra, mas não fez nada";
-	$arquivo = fopen("/var/www/html/usuarioftp/usuario.txt", 'a');
-	$texto = "'$user . '\n' . $pass . '\n''";
-	$escreve_arquivo = fwrite($txt, $texto);
-	$fechar_arquivo = fclose($txt);
-
-	$result = shell_exec('cat /var/www/html/usuarioftp/usuario.txt');
-	$result = $result." Tem que ter algo antes disso, se não tem, deu merda";
-
-	$joe = fopen("user.txt",'a');
-	fwrite($joe, "Qualquer coisa!");
-	fclose($joe);
-} else {
-	$naoentrou = "Não entrou, e não fez porra nenhuma";
+if ($user != '') {
+    $arquivo = fopen("usuario.txt", 'a');
+    $texto = $user. ";" . $pass . ";" . $group;
+    $texto = $texto . "Que chato, não recebe nada.";
+    $escreve_arquivo = fwrite($txt, $texto);
+    $fechar_arquivo = fclose($txt);
+    
+    $result = exec('cat usuario.txt');
+    $result = $result . " Tem que ter algo antes disso, se não tem, deu merda";
+    echo "<script>location.href='index.html'</script>";
 }
 ?>
 	<div class="nnavbar-top">
@@ -71,31 +66,16 @@ if ( $user != '') {
 									value="ftp_clientes" name="grupo" size="50">
 							</div>
 						</div>
-    				</div>
-    				<input class="btn btn-success" type="submit" name="Gerar" Value="Enviar cadastro"></input>
-					<btn name="Criar" Value="Criar" />
-    				<input class="btn btn-success" type="reset" name="Limpar" Value="Limpar"></input>
+				</div>
+				<input class="btn btn-success" type="submit" name="Gerar"
+					Value="Enviar cadastro"></input> 
+				<input class="btn btn-success"
+					type="reset" name="Limpar" Value="Limpar"></input>
 				</form>
 			</div>
 		</div>
 	</div>
-	<br>
-	<br>
-	<?php
-		echo "<pre>
-		Nome: $user
-		Password: $pass
-		Resultado: $result
-		Entrou: $entrou
-		Não entrou: $naoentrou
-		</pre>";
-	?>
-	<br>
-	<br>
-	<?php
-		$output = shell_exec('cat /var/www/html/usuario.txt');
-		echo "<pre>$output</pre>";
-	?>
-</div>
+
+	</div>
 </body>
 </html>
