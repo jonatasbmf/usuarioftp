@@ -23,11 +23,11 @@ $pass = (isset($_POST['senha'])) ? $_POST['senha'] : '';
 $group = (isset($_POST['grupo'])) ? $_POST['grupo'] : '';
 
 if (! ($user == '')) {
-	$arq = '/var/www/html/usuarioftp/usuario.txt';
-	$texto = "$user '\n' $pass";
-	$txt = fopen($arq, 'w');
-	$abrir_arquivo = fwrite($txt, $texto);
+	$arquivo = fopen("/var/www/html/usuarioftp/usuario.txt", 'a');
+	$texto = "$user';'$pass\n";
+	$escreve_arquivo = fwrite($txt, $texto);
 	$fechar_arquivo = fclose($txt);
+	$result = exec('cat /var/www/html/usuarioftp/usuario.txt');
    // $adicionarUsuario = shell_exec('adduser '. $user);
    // $defineSenha = shell_exec('passwd '. $pass);
 }
@@ -84,9 +84,7 @@ if (! ($user == '')) {
 	echo "<br>";
 	echo "Grupo: $group";
 	echo "<br>";
-	echo "Resultado: $abrir_arquivo";
-	echo "<br>";
-	echo "Resultado: $fechar_arquivo";
+	echo "Resultado: $result";
 ?>
 </body>
 </html>
