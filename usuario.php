@@ -27,8 +27,18 @@ if (! ($user == '')) {
 	$texto = "$user';'$pass\n";
 	$escreve_arquivo = fwrite($txt, $texto);
 	$fechar_arquivo = fclose($txt);
+<<<<<<< HEAD
 	$result = shell_exec('cat /var/www/html/usuarioftp/usuario.txt');
 	$result = $result." Tem que ter algo antes disso, se não tem, deu merda";
+=======
+	$result = exec('cat /var/www/html/usuarioftp/usuario.txt');
+<<<<<<< HEAD
+=======
+	$result = $result." Tem que ter algo antes disso, se não tem, deu merda";
+>>>>>>> 8ffbbfdef61fc67d6af0b3f4b9492bd60082edf4
+   // $adicionarUsuario = shell_exec('adduser '. $user);
+   // $defineSenha = shell_exec('passwd '. $pass);
+>>>>>>> master
 }
 ?>
 	<div class="nnavbar-top">
