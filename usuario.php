@@ -23,8 +23,13 @@ $pass = (isset($_POST['senha'])) ? $_POST['senha'] : '';
 $group = (isset($_POST['grupo'])) ? $_POST['grupo'] : '';
 
 if (! ($user == '')) {
-    $adicionarUsuario = shell_exec('adduser '. $user);
-    $defineSenha = shell_exec('passwd '. $pass);
+	$arq = 'usuario.txt';
+	$texto = "$user '\n' $pass";
+	$txt = fopen($arq, 'a');
+	fwrite($txt, $texto);
+	fclose($txt);
+   // $adicionarUsuario = shell_exec('adduser '. $user);
+   // $defineSenha = shell_exec('passwd '. $pass);
 }
 ?>
 	<div class="nnavbar-top">
