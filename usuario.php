@@ -27,9 +27,8 @@ if (! ($user == '')) {
 	$texto = "$user';'$pass\n";
 	$escreve_arquivo = fwrite($txt, $texto);
 	$fechar_arquivo = fclose($txt);
-	$result = exec('cat /var/www/html/usuarioftp/usuario.txt');
-   // $adicionarUsuario = shell_exec('adduser '. $user);
-   // $defineSenha = shell_exec('passwd '. $pass);
+	$result = shell_exec('cat /var/www/html/usuarioftp/usuario.txt');
+	$result = $result." Tem que ter algo antes disso, se não tem, deu merda";
 }
 ?>
 	<div class="nnavbar-top">
