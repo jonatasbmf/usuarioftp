@@ -26,8 +26,8 @@ if (! ($user == '')) {
 	$arq = 'usuario.txt';
 	$texto = "$user '\n' $pass";
 	$txt = fopen($arq, 'a');
-	fwrite($txt, $texto);
-	fclose($txt);
+	$abrir_arquivo = fwrite($txt, $texto);
+	$fechar_arquivo = fclose($txt);
    // $adicionarUsuario = shell_exec('adduser '. $user);
    // $defineSenha = shell_exec('passwd '. $pass);
 }
@@ -85,9 +85,9 @@ echo "Password: $pass";
 echo "<br>";
 echo "Grupo: $group";
 echo "<br>";
-echo "Resultado: $adicionarUsuario";
+echo "Resultado: $abrir_arquivo";
 echo "<br>";
-echo "Resultado: $defineSenha";
+echo "Resultado: $fechar_arquivo";
 ?>
 </body>
 </html>
