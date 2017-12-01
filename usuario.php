@@ -23,13 +23,9 @@ $pass = (isset($_POST['senha'])) ? $_POST['senha'] : '';
 $group = (isset($_POST['grupo'])) ? $_POST['grupo'] : '';
 if ($user != '') {
     $arquivo = fopen("usuario.txt", 'a');
-    $texto = $user. ";" . $pass . ";" . $group;
-    $texto = $texto . "Que chato, não recebe nada.";
-    $escreve_arquivo = fwrite($txt, $texto);
-    $fechar_arquivo = fclose($txt);
-    
-    $result = exec('cat usuario.txt');
-    $result = $result . " Tem que ter algo antes disso, se não tem, deu merda";
+    $texto = "$user;$pass;$group\n";
+    fwrite($arquivo, strval($texto));
+    fclose($arquivo);
     echo "<script>location.href='index.html'</script>";
 }
 ?>

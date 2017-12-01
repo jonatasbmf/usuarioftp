@@ -1,0 +1,3 @@
+jonatas;jonatas;ftp_clientes
+thamiris;thamiris;ftp_clientes
+vinicius;vinicius;ftp_clientes
