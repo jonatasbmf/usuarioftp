@@ -19,4 +19,4 @@
 #
 ##################################
 
-adduser -g $grupo -m $usuario
+adduser -g $grupo -m $usuario -p $senha
