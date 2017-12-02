@@ -1,3 +1,0 @@
-jonatas;jonatas;ftp_clientes
-thamiris;thamiris;ftp_clientes
-thiago;thiago;ftp_clientes
