@@ -25,7 +25,8 @@ if ($user != '') {
     $arquivo = fopen("usuario.txt", 'a');
     $texto = "$user;$pass;$group\n";
     fwrite($arquivo, strval($texto));
-    fclose($arquivo);
+	fclose($arquivo);
+	echo "<script>alert('Enviado para cadastro, provavelmente em 3 min já estará disponível.')</script>";
     echo "<script>location.href='index.html'</script>";
 }
 ?>
