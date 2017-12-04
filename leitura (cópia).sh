@@ -14,14 +14,14 @@
 # - Script tem a finalidade de adicionar usuários ao sistema
 # para que os mesmos tenham acesso ao FTP
 # 
-# - Script está sendo chamado pelo Cron de 5 em 5 min;
+# - Script está sendo chamado pelo Cron de 3 em 3 min;
 # - Usuários adicionados estão em um arquivo txt.
 #
 ##################################
 
 LISTA=/var/www/html/usuarioftp/usuario.txt
 LINHA_QTD_TOTAL=`cat $LISTA | wc -l`
-LINHA=1
+LINHA=0
 
 while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
     USUARIO=`sed -n "$LINHA"p $LISTA | cut -f1 -d";"`
