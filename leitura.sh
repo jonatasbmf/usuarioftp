@@ -15,7 +15,7 @@
 # - Usuários adicionados estão em um arquivo txt.
 #
 ################################################
-DATA=`date`
+DATA=`date +%Y%m%d-%H:%M`
 LISTA=/var/www/html/usuarioftp/usuario.txt
 LINHA_QTD_TOTAL=`cat $LISTA | wc -l`
 #LINHA_QTD_TOTAL=`expr $LINHA_QTD_TOTAL + 1`
@@ -27,10 +27,9 @@ while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
     GRUPO=`sed -n "$LINHA"p $LISTA | cut -f3 -d";"`
     SENHA2=$(openssl passwd $SENHA)
 
-    #useradd -m -g $GRUPO -p $SENHA $USUARIO
-    adduser -m -g $GRUPO -p $SENHA $USUARIO
+    useradd -m $USUARIO -g $GRUPO -p $SENHA2 
 
-    if [ $? == 0 ] 
+    if [ $? -eq 0 ] 
     then
         echo "Criado o usuário: $USUARIO com a senha: $SENHA no grupo: $GRUPO - $DATA" 
     else
