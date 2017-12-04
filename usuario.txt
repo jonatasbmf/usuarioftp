@@ -1,0 +1,2 @@
+thiago;thiago;ftp_clientes
+thamiris;thamiris;ftp_clientes
