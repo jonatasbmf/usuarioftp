@@ -7,7 +7,7 @@
 #
 # Criado em: 01/12/2017
 #
-# Ultima atualizacao: 01/12/2017 
+# Ultima atualizacao: 06/12/2017 
 #
 ##[ Descricao ]########################
 #
@@ -33,9 +33,9 @@ while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
     echo $SENHA
     echo $GRUPO
 
-    useradd -g $GRUPO -m $USUARIO -p $SENHA2
+    sudo useradd -g $GRUPO -m $USUARIO -p $SENHA2
 
     LINHA=`expr $LINHA + 1`
 done
-
+cp $LISTA log/$LISTA`data +%Y%m%d`
 rm -f $LISTA
