@@ -1,4 +1,0 @@
-thiago;thiago;ftp_clientes
-thamiris;thamiris;ftp_clientes
-boneco;boneco;ftp_clientes
-noventa;noventa;ftp_clientes
