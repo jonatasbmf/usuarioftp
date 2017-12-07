@@ -17,7 +17,7 @@
 ##[ Descricao ]#################################
 #
 # - Script tem a finalidade de adicionar usuários ao sistema
-# para que os mesmos tenham acesso ao FTP 
+# para que os mesmos tenham acesso ao FTP
 # - Script está sendo chamado pelo Cron de 3 em 3 min;
 # - Usuários adicionados estão em um arquivo txt.
 #
@@ -34,20 +34,17 @@ while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
     GRUPO=`sed -n "$LINHA"p $LISTA | cut -f3 -d";"`
     SENHA2=$(openssl passwd $SENHA)
 
-<<<<<<< HEAD
-    useradd -m $USUARIO -g $GRUPO -p $SENHA2 
-=======
-    sudo useradd -g $GRUPO -m $USUARIO -p $SENHA2
->>>>>>> master
+#	sudo useradd -m $USUARIO -g $GRUPO -p $SENHA2
+	sudo useradd -g $GRUPO -m $USUARIO -p $SENHA2
 
-    if [ $? -eq 0 ] 
+    if [ $? -eq 0 ]
     then
-        echo "Criado o usuário: $USUARIO com a senha: $SENHA no grupo: $GRUPO - $DATA" 
+        echo "Criado o usuário: $USUARIO com a senha: $SENHA no grupo: $GRUPO - $DATA"
     else
         echo "Erro na criação do usário $USUARIO! - $DATA "
     fi
-    
+
     LINHA=`expr $LINHA + 1`
-done
-cp $LISTA log/$LISTA`data +%Y%m%d`
+
+cp $LISTA log/$LISTA`date +%Y%m%d`
 rm -f $LISTA
