@@ -4,15 +4,12 @@
 #
 # Nome: leitura.sh
 # Escrito por: Jônatas Freitas (nenhumdeucerto)
-<<<<<<< HEAD
 # Criado em: 04/12/2017
-# Ultima atualizacao: 01/12/2017 
-=======
+# Ultima atualizacao: 07/12/2017
 #
 # Criado em: 01/12/2017
 #
-# Ultima atualizacao: 06/12/2017 
->>>>>>> master
+# Ultima atualizacao: 06/12/2017
 #
 ##[ Descricao ]#################################
 #
@@ -22,6 +19,7 @@
 # - Usuários adicionados estão em um arquivo txt.
 #
 ################################################
+
 DATA=`date +%Y%m%d-%H:%M`
 LISTA=/var/www/html/usuarioftp/usuario.txt
 LINHA_QTD_TOTAL=`cat $LISTA | wc -l`
@@ -34,17 +32,19 @@ while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
     GRUPO=`sed -n "$LINHA"p $LISTA | cut -f3 -d";"`
     SENHA2=$(openssl passwd $SENHA)
 
-#	sudo useradd -m $USUARIO -g $GRUPO -p $SENHA2
-	sudo useradd -g $GRUPO -m $USUARIO -p $SENHA2
+	sudo useradd -m $USUARIO -g $GRUPO -p $SENHA2
+#	sudo useradd -g $GRUPO -m $USUARIO -p $SENHA2
 
     if [ $? -eq 0 ]
     then
         echo "Criado o usuário: $USUARIO com a senha: $SENHA no grupo: $GRUPO - $DATA"
     else
+	echo "Retorno é:"
+	echo $?
         echo "Erro na criação do usário $USUARIO! - $DATA "
     fi
 
     LINHA=`expr $LINHA + 1`
 
-cp $LISTA log/$LISTA`date +%Y%m%d`
+cp $LISTA /var/www/html/usuarioftp/log/`$LISTA$DATA.txt`
 rm -f $LISTA
