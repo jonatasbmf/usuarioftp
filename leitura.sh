@@ -23,7 +23,6 @@
 DATA=`date +%Y%m%d-%H:%M`
 LISTA=/var/www/html/usuarioftp/usuario.txt
 LINHA_QTD_TOTAL=`cat $LISTA | wc -l`
-#LINHA_QTD_TOTAL=`expr $LINHA_QTD_TOTAL + 1`
 LINHA=1
 
 while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
@@ -33,7 +32,6 @@ while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
     SENHA2=$(openssl passwd $SENHA)
 
 	sudo useradd -m $USUARIO -g $GRUPO -p $SENHA2
-#	sudo useradd -g $GRUPO -m $USUARIO -p $SENHA2
 
     if [ $? -eq 0 ]
     then
