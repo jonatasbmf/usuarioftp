@@ -7,6 +7,7 @@ usuários sejam informados e por um script rodado pelo servidor em
 um período pré-determinado sejam inseridos.
 
 No Cron do Usuario vamos inserir as seguintes informações:
+
     Crontab -e
     */2 * * * * sh /var/www/html/usuarioftp/leitura.sh
     */3 * * * * (cat /etc/passwd | cut -d \: -f1) > /var/www/html/usuarioftp/cadastrados.txt
