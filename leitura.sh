@@ -15,12 +15,12 @@
 # - Usuários adicionados estão em um arquivo txt.
 #
 ################################################
-
+echo "Inicio, definindo variáveis."
 DATA=`date +%Y%m%d-%H:%M`
 LISTA=/var/www/html/usuarioftp/usuario.txt
 LINHA_QTD_TOTAL=`cat $LISTA | wc -l`
 LINHA=1
-
+echo "Começa a ler o arquivo"
 while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
     USUARIO=`sed -n "$LINHA"p $LISTA | cut -f1 -d";"`
     SENHA=`sed -n "$LINHA"p $LISTA | cut -f2 -d";"`
@@ -33,12 +33,14 @@ while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
     then
         echo "Criado o usuário: $USUARIO com a senha: $SENHA no grupo: $GRUPO - $DATA"
     else
-	echo "Retorno é:"
-	echo $?
         echo "Erro na criação do usário $USUARIO! - $DATA "
     fi
 
     LINHA=`expr $LINHA + 1`
 
-cp $LISTA /var/www/html/usuarioftp/log/`$LISTA$DATA.txt`
+done
+echo "While finalizado..."
+cp $LISTA /var/www/html/usuarioftp/log/
 rm -f $LISTA
+cd /var/www/html/usuarioftp/log
+mv usuario.txt usuario-$DATA.txt
