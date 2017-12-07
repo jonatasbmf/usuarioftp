@@ -4,12 +4,8 @@
 #
 # Nome: leitura.sh
 # Escrito por: Jônatas Freitas (nenhumdeucerto)
-# Criado em: 04/12/2017
-# Ultima atualizacao: 07/12/2017
-#
 # Criado em: 01/12/2017
-#
-# Ultima atualizacao: 06/12/2017
+# Ultima atualizacao: 07/12/2017
 #
 ##[ Descricao ]#################################
 #
