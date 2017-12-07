@@ -4,8 +4,15 @@
 #
 # Nome: leitura.sh
 # Escrito por: Jônatas Freitas (nenhumdeucerto)
+<<<<<<< HEAD
 # Criado em: 04/12/2017
 # Ultima atualizacao: 01/12/2017 
+=======
+#
+# Criado em: 01/12/2017
+#
+# Ultima atualizacao: 06/12/2017 
+>>>>>>> master
 #
 ##[ Descricao ]#################################
 #
@@ -27,7 +34,11 @@ while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
     GRUPO=`sed -n "$LINHA"p $LISTA | cut -f3 -d";"`
     SENHA2=$(openssl passwd $SENHA)
 
+<<<<<<< HEAD
     useradd -m $USUARIO -g $GRUPO -p $SENHA2 
+=======
+    sudo useradd -g $GRUPO -m $USUARIO -p $SENHA2
+>>>>>>> master
 
     if [ $? -eq 0 ] 
     then
@@ -38,5 +49,5 @@ while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
     
     LINHA=`expr $LINHA + 1`
 done
-
+cp $LISTA log/$LISTA`data +%Y%m%d`
 rm -f $LISTA
