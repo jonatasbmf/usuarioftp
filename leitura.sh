@@ -56,3 +56,4 @@ while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
 
 done
 echo "While finalizado..."
+rm -f $APAGAR
