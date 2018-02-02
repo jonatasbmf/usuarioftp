@@ -46,49 +46,50 @@
 			<div class="col-md-3"></div>
 				<div class="col-md-6">
 					<div class="portlet light bordered">
-					<?php
-					$arquivo = fopen("cadastrados.txt", 'r+');
-					$meusUsuarios = array();
-					
-					while (!feof($arquivo)){
-						$linha = fgets($arquivo,6080);
-						$userVerificar = trim($linha);
-						if (!verificaSeExiste($userVerificar)){
-							$meusUsuarios[] = $userVerificar;
-						}		
-					}
-					fclose ($arquivo);
-					asort($meusUsuarios); //Está organizando os valores em ordem alfabética
-					$meusUsuarios = array_filter($meusUsuarios); // Está tirando todo e qualquer valor vazio ou nulo do array
-					echo '<table class="table" style="text-align:center;vertical-align:middle;">';
-						echo '<tr>';
-							echo '<th style="text-align:center;vertical-align:middle;">';
-								echo "Usuário";
-							echo "</th>";
-							echo '<th style="text-align:center;vertical-align:middle;">';
-								echo "Função";
-							echo "</th>";			
-						echo "</tr>";
-
-					echo '<tbody class="table-striped">';
-						foreach ($meusUsuarios as $_user){
-							echo '<tr>';
+						<?php
+							$arquivo = fopen("cadastrados.txt", 'r+');
+							$meusUsuarios = array();							
+							while (!feof($arquivo)){
+								$linha = fgets($arquivo,6080);
+								$userVerificar = trim($linha);
+								if (!verificaSeExiste($userVerificar)){
+									$meusUsuarios[] = $userVerificar;
+								}		
+							}
+							fclose ($arquivo);
+							asort($meusUsuarios); //Está organizando os valores em ordem alfabética
+							$meusUsuarios = array_filter($meusUsuarios); // Está tirando todo e qualquer valor vazio ou nulo do array
+							echo '<form action="del_user.php" method="POST">';
+							echo '<table class="table" style="text-align:center;vertical-align:middle;">';
+								echo '<tr>';
+									echo '<th style="text-align:center;vertical-align:middle;">';
+										echo "Usuário";
+									echo "</th>";
+									echo '<th style="text-align:center;vertical-align:middle;">';
+										echo "Função";
+									echo "</th>";			
+								echo "</tr>";
+							echo '<tbody class="table-striped">';			
+								echo '<tr>';
 									echo "<td>";
-										echo $_user;
+										echo "<select name='usuario'>";
+											foreach ($meusUsuarios as $_user){
+												echo "<option value='$_user' name='$_user'>$_user</option>";
+											}
+										echo '</select>';
 									echo "</td>";
 									echo "<td>";
-										echo '<a href="del_user.php?usuario='. $_user .'"><input class="btn btn-danger" type="submit" name="Gerar" Value="Limpar pasta do usuário"></input></a>';
+										echo '<input class="btn btn-danger" type="submit" Value="Limpar pasta do usuário">';
 									echo "</td>";					
-							echo '</tr>';		
-						}			
-					echo '</tbody>';	
-					echo "</table>";
-					?>
+								echo '</tr>';										
+							echo '</tbody>';	
+							echo "</table>";
+							echo '</form>';
+						?>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
