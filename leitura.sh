@@ -17,10 +17,11 @@
 ################################################
 echo "Inicio, definindo variáveis."
 DATA=`date +%Y%m%d-%H:%M`
+
 LISTA=/var/www/html/usuarioftp/usuario.txt
 LINHA_QTD_TOTAL=`cat $LISTA | wc -l`
 LINHA=1
-echo "Começa a ler o arquivo"
+echo "Começa a ler o arquivo de inclusão de novos usuários"
 while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
     USUARIO=`sed -n "$LINHA"p $LISTA | cut -f1 -d";"`
     SENHA=`sed -n "$LINHA"p $LISTA | cut -f2 -d";"`
@@ -40,7 +41,18 @@ while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
 
 done
 echo "While finalizado..."
-cp $LISTA /var/www/html/usuarioftp/log/
 rm -f $LISTA
-cd /var/www/html/usuarioftp/log
-mv usuario.txt usuario-$DATA.txt
+
+
+APAGAR=/var/www/html/usuarioftp/limpar.txt
+LINHA_QTD_TOTAL=`cat $APAGAR | wc -l`
+LINHA=1
+echo "Começa a ler o arquivo de limpesa de pasta do usuário selecionado"
+while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
+    USUARIO=`sed -n "$LINHA"p $LISTA | cut -f1 -d";"`
+    cd /home/$USUARIO
+    rm *
+    LINHA=`expr $LINHA + 1`
+
+done
+echo "While finalizado..."
