@@ -12,14 +12,10 @@
 		fclose ($arquivo);
 		return false;
 	}
-
-
 ?>
-
 <Html>
 <head>
 <meta charset='utf-8'>
-
 <link href="estilo/estilo.css" rel="stylesheet">
 <link href="estilo/bootstrap.min.css" rel="stylesheet">
 <link href="estilo/components-md.min.css" rel="stylesheet">
@@ -35,12 +31,10 @@
 <title>Listagem de usuários</title>
 </head>
 <body>
-
 	<div class="nnavbar-top">
 		<a href="index.html"> <img src="Imagens/logo.png" alt="Logo-marca"
 			class="img-logo-navbar"></a>
 	</div>
-
 	<div class="page-content-wrapper" style="padding-top: 100px;">
 		<div class="">
 			<div class="col-md-3"></div>

@@ -18,9 +18,9 @@
 </head>
 <body>
 <?php
-$user = (isset($_POST['nome'])) ? $_POST['nome'] : '';
-$pass = (isset($_POST['senha'])) ? $_POST['senha'] : '';
-$group = (isset($_POST['grupo'])) ? $_POST['grupo'] : '';
+$user = (isset($_POST['nome'])) ? strtolower($_POST['nome']) : '';
+$pass = (isset($_POST['senha'])) ? strtolower($_POST['senha']) : '';
+$group = (isset($_POST['grupo'])) ? strtolower($_POST['grupo']) : '';
 if ($user != '') {
     $arquivo = fopen("usuario.txt", 'a');
     $texto = "$user;$pass;$group\n";
@@ -45,21 +45,21 @@ if ($user != '') {
 						<div class="form-group">
 							<label>Nome do Usuário</label>
 							<div class="input-group">
-								<input type="text" requerid class="form-control"
+								<input type="text" requerid class="form-control" style="text-transform: lowercase;"
 									placeholder="Usar nome da empresa" size="50" name="nome">
 							</div>
 						</div>
 						<div class="form-group">
 							<label>Informe a senha</label>
 							<div class="input-group">
-								<input type="text" requerid class="form-control"
+								<input type="text" requerid class="form-control" style="text-transform: lowercase;"
 									placeholder="Utilizar código do atender" size="50" name="senha">
 							</div>
 						</div>
 						<div class="form-group">
 							<label>Informe o grupo do usuário</label>
 							<div class="input-group">
-								<input type="text" requerid class="form-control"
+								<input type="text" requerid readonly="true" class="form-control"
 									value="ftp_clientes" name="grupo" size="50">
 							</div>
 						</div>
