@@ -47,13 +47,13 @@ rm -f $LISTA
 APAGAR=/var/www/html/usuarioftp/limpar.txt
 LINHA_QTD_TOTAL=`cat $APAGAR | wc -l`
 LINHA=1
-echo "Começa a ler o arquivo de limpesa de pasta do usuário selecionado"
+echo "Começa a ler o arquivo de limpeza de pasta do usuário selecionado"
 while [ $LINHA -le $LINHA_QTD_TOTAL ] ; do
-    USUARIO=`sed -n "$LINHA"p $LISTA | cut -f1 -d";"`
-    cd /home/$USUARIO
+    USU=`sed -n "$LINHA"p $APAGAR | cut -f1 -d";"`
+    cd /home/$USU
     rm *
     LINHA=`expr $LINHA + 1`
 
 done
-echo "While finalizado..."
+echo "While finalizado... Exclusoes efetuadas"
 rm -f $APAGAR

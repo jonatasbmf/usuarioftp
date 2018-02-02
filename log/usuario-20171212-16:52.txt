@@ -1,0 +1,2 @@
+ipe;101907;ftp_clientes
+predial;10383;ftp_clientes

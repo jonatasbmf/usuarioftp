@@ -1,0 +1,2 @@
+iqs;10397;ftp_clientes
+cosampa;78352;ftp_clientes
