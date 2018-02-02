@@ -1,1 +1,0 @@
-guaxe;68624;ftp_clientes

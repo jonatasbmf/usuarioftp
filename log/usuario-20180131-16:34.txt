@@ -1,1 +1,0 @@
-anglo;123456;ftp_clientes
