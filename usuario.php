@@ -17,6 +17,9 @@
 <title>Banco de horas</title>
 </head>
 <body>
+
+
+
 <?php
 $user = (isset($_POST['nome'])) ? strtolower($_POST['nome']) : '';
 $pass = (isset($_POST['senha'])) ? strtolower($_POST['senha']) : '';
@@ -34,11 +37,19 @@ if ($user != '') {
 		<a href="index.html"> <img src="Imagens/logo.png" alt="Logo-marca"
 			class="img-logo-navbar"></a>
 	</div>
-	<div class="page-content-wrapper" style="padding-top: 100px;">
+
+	<div class="page-content-wrapper" style="padding-top: 90px;">
 		<div class="">
+			
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
 				<div class="portlet light bordered">
+				<div class="message">
+				<div class="alert alert-danger">
+					<a href="usuario.php" class="close" data-dismiss="alert">&times</a>
+					O serviço de FTP está em um servidor Linux, letras maiusculas e minusculas serão validadas.
+				</div>
+			</div>
 					<form method="POST" action="usuario.php">
 						<h2>Formulário de cadastro de novos usuários</h2>
 						<br>
